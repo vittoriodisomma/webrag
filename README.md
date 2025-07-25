@@ -1,114 +1,34 @@
-# Welcome to `mastrogpt-starter`
+# Welcome to `Webrag Chatbot`
 
-This repository is the starter for the course **Developing Open LLM applications with Apache OpenServerless**, also known as **The MastroGPT course**.
-
-## Prerequisites
-
-You need an up and running instance of [Apache OpenServerless](https://openserverless.apache.org) to deploy and run your code. 
-
-You can:
--  Ask for a free development account on `openserverless.dev` courtesy of [Nuvolaris](http://nuvolaris.io). Contact us:
-   - on [MastroGPT.com](https://mastrogpt.nuvolaris.dev) using our chatbot
-   - on [Linkedin](https://linkedin.com/in/msciab) sending a private message 
-   - on [Discord](https://bit.ly/openserverless-discord) (contact **Michele Sciabarra**)
-   - on [Reddit](https://reddit.com/r/openserverless) sending a private message to [msciabarra](https://reddit.com/u/msciabarra)
-  
-- Self-host it [installing by yourself](https://openserverless.apache.org/docs/installation/)
+This repository is the development of the Webrag Chatbot for scrapying a website and extracting information from it.
 
 
-## Launch a codespace with this starter
+## Introduction
 
-First, go to `https://github.com/mastrogpt/` then select the pinned `mastrogpt-starter` repo (you should already be here):
+Webrag is an intelligent chatbot designed to receive the URL of a website as input and return an index of its contents. The collected information (page URLs and related textual content) is stored in the Milvus vector database.                                                                                                                         At the start of each conversation, the chatbot displays a welcome message with available user options, which are described in detail in the following sections: website indexing and information extraction from an indexed site.
 
-![](lessons/assets/starter.png)
+### Content Extraction
 
-Now launch the codespace on it:
-
-![](lessons/assets/codespaces.png)
-
-It takes a bit to download images and starts.
-
-Wait until you see the "openserverless icon", then click on the  OpenServerless Icon and finally, click on Login and put your credentials, as follows:
-
-![](lessons/assets/environment.png)
+In the initial version, Webrag analyzes only the homepage corresponding to the provided URL. In future versions, a generative AI model will be used to identify a meaningful set of associated pages within the website.
 
 
-# Overview
+### Summary Generation
 
-You can recognize below the following icons:
+To comply with Milvus’s storage constraints, the content of each page is summarized using a generative AI model. This produces concise yet informative summaries.
 
-![](lessons/assets/icons.png)
 
-On the vertical Activity Bar to the left:
+### Storage in Milvus
 
-- **Documents** icon
-- **Search** icon
-- **Tests** icon
-- **OpenServerless** icon
+Each page is stored as a dictionary containing its URL and the corresponding summary. At the end of the process, the user receives a confirmation message with the outcome of the operation.
 
-In the Testing panel:
-- Run Tests
-- Run One Test
 
-Now, let's check that everything works.
+##  Information Extraction
 
-## Presentation
+To query a previously indexed website, the user can simply enter a natural language question (not a URL). In response, Webrag performs a semantic search on Milvus and returns:
 
-Open the course slides:
+- The most relevant information related to the query.
+- A customizable list of the pages from which the information was extracted, providing transparency and opportunities for deeper exploration.
 
-- Click Documents icon
-- Open `lessons/0-welcome.md`
-- Click on preview icon
-
-You should see the Apache OpenServerless slides.
-
-## Deployment
-
-Deploy the sample code:
-
-- Click on OpenServerless icon then
-- Click on Deploy
-
-Deployment should complete with no errors.
-
-## Testing
-
-Run the tests:
-
-- Click on the Tests Icon 
-- Run all the tests
-
-All the tests should pass.
-
-**NOTE**: if you don't see any test, it may help to:
-
-- open directly a test file under `tests``
-- if you still dont's see the tests, reload the window
-
-# Develoment Mode
-
-Now lets check the development mode and the user interface:
-
-![](lessons/assets/devmode.png)
-
-1. `OpenServerless` icon then `Devel` button
-1. Open the forwarding
-1. Click on the "world" icon
-1. Login into Pinocchio
-1.  `pinocchio`/`geppetto`
-
-![](lessons/assets/pinocchio.png)
-
-# Terminal commands
-
-There are actually plenty of other commands available on the command line.
-
-Open a terminal (Menu: `Terminal` | `New Terminal`) then try:
-
-1. Change the password: `ops ai user update pinocchio`
-1. Redeploy the login `ops ide deploy mastrogpt/login`
-
-You are ready!
 
 
 
